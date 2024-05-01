@@ -196,18 +196,7 @@ int QTR8_read_black()
     active++;
 
   }
-/*
-	if (HAL_GPIO_ReadPin(SENSOR9_GPIO_Port, SENSOR9_Pin)) {
-		sensor_read |= 0x0100000000;
-		pos += 9000;
-    active++;
-  }
-	if (HAL_GPIO_ReadPin(SENSOR10_GPIO_Port, SENSOR10_Pin)) {
-		sensor_read |= 0x1000000000;
-		pos += 10000;
-    active++;
-		last_end = 0;
-  }*/
+
 
   HAL_GPIO_WritePin(LEDON_GPIO_Port, LEDON_Pin, 0);
     actives = active;
@@ -217,16 +206,7 @@ int QTR8_read_black()
 		last_idle++;
 	else
 		last_idle = 0;
-	/*c9=HAL_GPIO_ReadPin(SENSOR9_GPIO_Port, SENSOR9_Pin);
-	c8=HAL_GPIO_ReadPin(SENSOR8_GPIO_Port, SENSOR8_Pin);
-	c7=HAL_GPIO_ReadPin(SENSOR7_GPIO_Port, SENSOR7_Pin);
-	c6=HAL_GPIO_ReadPin(SENSOR6_GPIO_Port, SENSOR6_Pin);
-	c5=HAL_GPIO_ReadPin(SENSOR5_GPIO_Port, SENSOR5_Pin);
-	c4=HAL_GPIO_ReadPin(SENSOR4_GPIO_Port, SENSOR4_Pin);
-	c3=HAL_GPIO_ReadPin(SENSOR3_GPIO_Port, SENSOR3_Pin);
-	c2=HAL_GPIO_ReadPin(SENSOR2_GPIO_Port, SENSOR2_Pin);
-	c10=HAL_GPIO_ReadPin(SENSOR10_GPIO_Port, SENSOR10_Pin);
-	c1=HAL_GPIO_ReadPin(SENSOR1_GPIO_Port, SENSOR1_Pin);*/
+	
 	c10=HAL_GPIO_ReadPin(SENSOR10_GPIO_Port, SENSOR10_Pin);
 	c5=HAL_GPIO_ReadPin(SENSOR1_GPIO_Port, SENSOR1_Pin);
 	return pos/active;
@@ -281,16 +261,7 @@ void move(int motor, int speed, int direction)
   	  __HAL_TIM_SET_COMPARE (&htim8, TIM_CHANNEL_3,inPin2*0.55 );
     }
 }
-/*void sharp_turn () {
 
-
-		if (last_end == 1){
-			move(1,Speed, 0);
-			move(0,Speed, 1);}
-		else{
-			move(1,Speed, 1);
-			move(0,Speed, 0);}
-}*/
 int constrain(int value, int min, int max) {
     if (value < min) {
         return min;
@@ -387,26 +358,7 @@ int main(void)
 
   HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_2);
   HAL_TIM_PWM_Start(&htim8, TIM_CHANNEL_3);
-/*
-  __HAL_TIM_SET_COMPARE (&htim1, TIM_CHANNEL_1, 750);
-  __HAL_TIM_SET_COMPARE (&htim1, TIM_CHANNEL_2,0);
-  __HAL_TIM_SET_COMPARE (&htim8, TIM_CHANNEL_2, 480);
-  __HAL_TIM_SET_COMPARE (&htim8, TIM_CHANNEL_3, 0);
-  HAL_Delay(300);
-  __HAL_TIM_SET_COMPARE (&htim1, TIM_CHANNEL_1, 750);
-  __HAL_TIM_SET_COMPARE (&htim1, TIM_CHANNEL_2,0);
-  __HAL_TIM_SET_COMPARE (&htim8, TIM_CHANNEL_2, 720);//680
-  __HAL_TIM_SET_COMPARE (&htim8, TIM_CHANNEL_3, 0);
-  HAL_Delay(700);*/
-  /* USER CODE END 2 */
 
-  /* Infinite loop */
-  /* USER CODE BEGIN WHILE */
-/*  __HAL_TIM_SET_COMPARE (&htim1, TIM_CHANNEL_1, 100);
-	__HAL_TIM_SET_COMPARE (&htim1, TIM_CHANNEL_2,100);
-    __HAL_TIM_SET_COMPARE (&htim8, TIM_CHANNEL_2, 100);
-	__HAL_TIM_SET_COMPARE (&htim8, TIM_CHANNEL_3, 100);
-    HAL_Delay(70000);*/
   while (1)
   {
     /* USER CODE END WHILE */
